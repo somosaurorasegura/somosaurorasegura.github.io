@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Aurora Segura • Cartillas </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+<link href="imglg/logo aurora.png" rel="icon">
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Handlee&display=swap" rel="stylesheet">
+<style>
+/* ---------- TOKENS (mismos valores que libro.html) ---------- */
+:root{
+  --as-primary:#c66cea;
+  --as-secondary:#9731a7;
+  --as-body:#ac3fb4;
+  --as-paper:#fffaff;
+  --as-paper-2:#fbeefe;
+  --as-shadow:0 18px 40px rgba(151,49,167,.18);
+  --as-grad:linear-gradient(120deg,#9731a7,#c66cea);
+}
+
+/* ---------- BASE ---------- */
+html{background:#f7ecfb}
+body{
+  font-family:'Nunito',sans-serif;
+  color:var(--as-body);
+  line-height:1.5;
+  background:
+    radial-gradient(1200px 500px at 15% -10%,#f3d9ff 0,transparent 60%),
+    radial-gradient(1000px 500px at 90% 0,#ffe0f3 0,transparent 55%),
+    linear-gradient(160deg,#f7ecfb 0%,#fdeafb 55%,#f3e6ff 100%);
+  background-attachment:fixed;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family:'Nunito',cursive;color:var(--as-secondary);font-weight:700;line-height:1.2;
+}
+p,li,i,span{font-family:'Nunito',sans-serif}
+
+/* ---------- UTILIDADES BOOTSTRAP RECOLOREADAS ---------- */
+.bg-primary{background:var(--as-grad)!important}
+.bg-secondary{background:var(--as-secondary)!important}
+.bg-light{background:#fdf6ff!important}
+.text-secondary{color:var(--as-secondary)!important}
+.bg-primary h1,.bg-primary h2,.bg-primary h3,.bg-primary h4,.bg-primary p,
+.bg-secondary h5,.bg-secondary p,.text-white{color:#fff!important}
+.text-primary{color:var(--as-primary)!important}
+a.text-primary:hover{color:var(--as-secondary)!important}
+.border-top{border-top:5px solid var(--as-primary)!important}
+.shadow,.shadow-sm{box-shadow:var(--as-shadow)!important}
+
+/* ---------- BOTONES ---------- */
+.btn-primary{
+  background:var(--as-grad);border:none;color:#fff;border-radius:30px;
+  font-weight:700;transition:transform .15s;
+}
+.btn-primary:hover,.btn-primary:focus{
+  background:var(--as-grad);color:#fff;transform:translateY(-2px) scale(1.02);box-shadow:none;
+}
+.btn-outline-primary{color:var(--as-secondary);border:2px solid var(--as-primary);border-radius:30px;font-weight:700}
+.btn-outline-primary:hover,.btn-outline-primary.active{background:var(--as-primary);border-color:var(--as-primary);color:#fff}
+.btn-outline-light:hover{background:#fff;color:var(--as-secondary)}
+.back-to-top{background:var(--as-grad)!important;border:none;border-radius:50%}
+
+/* ---------- NAVBAR ---------- */
+.navbar-light .navbar-nav .nav-link{
+  font-family:'Nunito',sans-serif;font-weight:700;color:var(--as-secondary)!important;transition:color .2s;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active{color:var(--as-primary)!important}
+.navbar-brand span{font-family:'Nunito',cursive;color:var(--as-primary)!important}
+.navbar-brand img{border-radius:12px}
+
+/* ---------- TITULOS DE SECCION ---------- */
+.section-title{color:var(--as-secondary)}
+.section-title span{color:var(--as-secondary);font-family:'Nunito',cursive;font-size:1.35rem}
+.section-title::before,.section-title::after{background:var(--as-primary)!important;border-color:var(--as-primary)!important}
+
+/* ---------- CABECERA DE LA PAGINA ---------- */
+.bg-primary h3.display-3{text-shadow:0 3px 0 rgba(0,0,0,.12)}
+
+/* ---------- CARTILLAS (imagen + texto) ---------- */
+.container-fluid.py-5 img.rounded{
+  border-radius:16px!important;border:6px solid #fff;box-shadow:var(--as-shadow);
+}
+.list-inline li.border-bottom,
+.list-inline li.border-top{border-color:rgba(151,49,167,.18)!important}
+.list-inline li{color:var(--as-body)}
+.fa-check.text-primary{color:var(--as-primary)!important}
+
+/* ---------- TARJETAS DE CUENTOS / ACTIVIDADES ---------- */
+.d-flex.bg-light.shadow-sm.border-top.rounded{
+  background:var(--as-paper)!important;border-radius:14px!important;
+  box-shadow:0 10px 24px rgba(198,108,234,.16)!important;
+  transition:transform .2s,box-shadow .2s;
+}
+.d-flex.bg-light.shadow-sm.border-top.rounded:hover{
+  transform:translateY(-6px);box-shadow:0 18px 34px rgba(151,49,167,.22)!important;
+}
+.d-flex.bg-light.border-top.rounded h4{color:var(--as-primary)}
+
+/* ---------- FOOTER ---------- */
+.bg-secondary .form-control{border-radius:8px;font-family:'Nunito',sans-serif}
+.bg-secondary .btn-primary{background:#fff;color:var(--as-secondary)}
+.bg-secondary .btn-primary:hover{background:#fff;color:var(--as-secondary);filter:brightness(.95)}
+.bg-secondary a.text-white:hover{color:#f0c4f7!important}
+</style>
+
+</head>
+
+<body>
+    <!-- Navbar Start -->
+
+    <div class="container-fluid bg-light position-relative shadow">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+            <a href="#" class="navbar-brand font-weight-bold text-secondary">
+    <img src="imglg/logo aurora.png" alt="Logo" style="height:70px;">
+                <span class="text-primary">Aurora Segura</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav font-weight-bold mx-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Inicio</a>
+                    <a href="about.html" class="nav-item nav-link active">Cartillas</a>
+                    <a href="class.html" class="nav-item nav-link">Socializacion</a>
+                    <a href="team.html" class="nav-item nav-link">Integrantes</a>
+                    <a href="gallery.html" class="nav-item nav-link">Galeria</a>
+                    <a href="libro.html" class="nav-item nav-link">Libro</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+
+    <!-- Cartillas Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+
+        
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="Foto cartillas/Cartilla 1.png" alt="Cartilla Uno Aurora Segura">
+                </div>
+                <div class="col-lg-7">
+                    <p class="section-title pr-5"><span class="pr-2">CARTILLA UNO</span></p>
+                    <h1 class="mb-4">Todos y todas merecemos respeto</h1>
+                    <p>Dirigida a estudiantes de 1°, 2° , 3° ,4° y 5°grado. Esta cartilla explica qué es el respeto: tratar bien a los demás sin importar si son niños o niñas, escuchar, compartir, ayudar y no burlarse ni excluir. El respeto hace que todos nos sintamos seguros y felices.</p>
+                    <div class="row pt-2 pb-4">
+                        <div class="col-12">
+                            <ul class="list-inline m-0">
+                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Conceptos claves: la diferencia entre sexo y género.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Qué es la violencia de género y cómo reconocerla.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Niños y niñas somos iguales en derechos.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Aprender a pedir ayuda a un adulto de confianza.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="Cartillas/cartilla uno aurora segura_compressed.pdf" target="_blank" class="btn btn-primary mt-2 py-2 px-4">Leer Cartilla Uno</a>
+                </div>
+            </div>
+
+      
+            <div class="row mb-5">
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>Rosa Caramelo</h4>
+                            <p class="m-0">La historia de Margarita nos enseña que no debemos cambiar para agradar a los demás. Cada uno es especial tal como es, y todos merecemos ser libres e iguales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>Arturo y Clementina</h4>
+                            <p class="m-0">No permitas que alguien corte tus alas ni apague tus sueños. Todos merecemos ser libres y encontrar nuestra propia felicidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>Luzia y la magia del respeto</h4>
+                            <p class="m-0">La violencia de género también ocurre cuando no dejan a alguien participar por ser niño o niña. Todos merecemos respeto e igualdad.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+   <div class="row align-items-center flex-lg-row-reverse mb-5">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="Foto cartillas/Cartilla 2.png" alt="Cartilla Dos Aurora Segura">
+                </div>
+                <div class="col-lg-7">
+                    <p class="section-title pr-5"><span class="pr-2">CARTILLA DOS</span></p>
+                    <h1 class="mb-4">Prevención de la violencia sexual</h1>
+                    <p>Dirigida a estudiantes de 1°, 2° y 3° grado. Junto a Luzia y su amigo Rayito, esta cartilla enseña que el cuerpo es propio, que nadie puede hacer sentir incómodo a un niño o niña, y el poder de decir "¡NO!" y contarlo a un adulto de confianza.</p>
+                    <div class="row pt-2 pb-4">
+                        <div class="col-12">
+                            <ul class="list-inline m-0">
+                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Qué es la violencia sexual y sus distintas manifestaciones.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Consecuencias y quiénes pueden ser víctimas.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Cómo identificar señales de alerta y por qué las víctimas callan.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Actividades: el semáforo del cuerpo y el juego de los secretos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="Cartillas/cartilla dos aurora segura_compressed.pdf" target="_blank" class="btn btn-primary mt-2 py-2 px-4">Leer Cartilla Dos</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>El poder de decir NO</h4>
+                            <p class="m-0">Tu cuerpo es tuyo, respétalo, dilo sin miedo y siempre cuéntalo a alguien de confianza.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>El semáforo del cuerpo</h4>
+                            <p class="m-0">Verde: toques seguros y de respeto. Amarillo: solo si yo quiero y doy permiso. Rojo: las partes privadas nadie puede verlas ni tocarlas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>El juego de los secretos</h4>
+                            <p class="m-0">Los secretos que te hacen feliz puedes guardarlos; los que te ponen triste, con miedo o incómodo debes contarlos a un adulto de confianza.</p>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="Foto cartillas/Cartilla 3.png" alt="Cartilla Aurora Segura Grados 4 y 5">
+                </div>
+                <div class="col-lg-7">
+                    <p class="section-title pr-5"><span class="pr-2">Cartilla 3</span></p>
+                    <h1 class="mb-4">Mi aventura de emociones, cuidado y respeto</h1>
+                    <p>Dirigida a estudiantes de 4° y 5° grado. Esta cartilla guía a los niños y niñas en un viaje de aprendizaje sobre el manejo de emociones, el autocuidado, la empatía, el consentimiento y el respeto hacia su cuerpo y privacidad.</p>
+                    <div class="row pt-2 pb-4">
+                        <div class="col-12">
+                            <ul class="list-inline m-0">
+                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Reconocer y expresar las emociones sin hacer daño.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>El poder del buen trato, la empatía y la resolución de conflictos.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Mi cuerpo, mis límites y la importancia del consentimiento.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Espacios privados, objetos personales y privacidad digital.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="Cartillas/Cartilla aurora 3_compressed.pdf" target="_blank" class="btn btn-primary mt-2 py-2 px-4">Leer Cartilla 3</a>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>Mis emociones y el buen trato</h4>
+                            <p class="m-0">Aprender que todas las emociones son válidas y descubrir el poder del buen trato: escuchar, respetar, incluir y ayudar a los demás.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>Límites y consentimiento</h4>
+                            <p class="m-0">Reconocer que nuestro cuerpo merece respeto, aprender a decir "no" ante la incomodidad y entender la importancia del consentimiento.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <h4>Privacidad y comunicación</h4>
+                            <p class="m-0">Cuidar nuestra privacidad física y digital, practicar la escucha activa y expresar lo que sentimos con respeto y amabilidad.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cartillas End -->
+
+
+<!-- Footer Start -->
+
+<!-- Footer Start -->
+<div class="container-fluid bg-secondary text-white mt-4 py-3 px-sm-3 px-md-5" style="font-size: 14px;">
+    <div class="row pt-2">
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-3 p-0" style="font-size: 28px; line-height: 28px;">
+                <i class="flaticon-043-teddy-bear"></i>
+                <span class="text-white">Aurora Segura</span>
+            </a>
+            <p class="mb-3" style="font-size: 13px; line-height: 1.4;">Iniciativa pedag&oacute;gica dedicada al fortalecimiento del autocuidado y la prevenci&oacute;n del riesgo en la infancia. Un compromiso con la seguridad de nuestros ni&ntilde;os y ni&ntilde;as de 1&ordm; a 3&ordm; grado.</p>
+            <div class="d-flex justify-content-start mt-3">
+                <a class="btn rounded-circle text-center text-white mr-2 px-0 d-inline-flex align-items-center justify-content-center"
+                   style="width: 35px; height: 35px; background-color: #d23edc; font-size: 14px;"
+                   href="https://www.instagram.com/aurora_seguraa/"
+                   target="_blank" rel="noopener"
+                   aria-label="Instagram de Aurora Segura">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <h4 class="text-primary mb-3" style="font-size: 18px;">Ponte en contacto</h4>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#128205;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">Direcci&oacute;n</strong>
+                    <p class="m-0" style="font-size: 13px;">Cl. 6 #8-10, Villa Del Rosario, Norte de Santander</p>
+                </div>
+            </div>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#9993;&#65039;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">Gmail</strong>
+                    <p class="m-0" style="font-size: 13px;">somosaurorasegura@gmail.com</p>
+                </div>
+            </div>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#128222;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">N&uacute;mero de contacto</strong>
+                    <p class="m-0" style="font-size: 13px;">324 7331192</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <h4 class="text-primary mb-3" style="font-size: 18px;">Enlaces r&aacute;pidos</h4>
+            <div class="d-flex flex-column justify-content-start" style="font-size: 13px;">
+                <a class="text-white mb-2" href="http://www.sednortedesantander.gov.co/"><i class="fa fa-angle-right mr-2"></i>Secretar&iacute;a de educaci&oacute;n</a>
+                <a class="text-white mb-2" href="https://www.policia.gov.co/"><i class="fa fa-angle-right mr-2"></i>Polic&iacute;a nacional</a>
+                <a class="text-white mb-2" href="https://www.icbf.gov.co/"><i class="fa fa-angle-right mr-2"></i>Portal ICBF</a>
+                <a class="text-white mb-2" href="https://caivirtual.policia.gov.co/"><i class="fa fa-angle-right mr-2"></i>CAI virtual</a>
+                <a class="text-white mb-2" href="https://www.icbf.gov.co/noticias/linea-141"><i class="fa fa-angle-right mr-2"></i>L&iacute;nea 141</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="w-100 pt-2 mt-2" style="border-top: 1px solid rgba(236, 101, 162, 0.3);">
+        <p class="m-0 text-center text-white" style="font-size: 12px;">
+            &copy; <a class="text-primary font-weight-bold" href="index.html">Aurora Segura</a>. Todos los derechos son reservados. Proyecto de formaci&oacute;n y prevenci&oacute;n infantil.
+        </p>
+    </div>
+
+</div>
+<!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

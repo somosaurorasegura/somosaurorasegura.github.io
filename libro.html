@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+      <link href="imglg/logo aurora.png" rel="icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aurora Segura • Libro</title>
+
+<!-- Bootstrap 4 CSS  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+<!-- FontAwesome para iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Handlee&display=swap" rel="stylesheet" />
+<style>
+  /* ===================== TOKENS  ===================== */
+  :root{
+    --primary:#c66cea;        
+    --secondary:#9731a7;      
+    --body-color:#691010;     
+    --heading-color:#9731a7;  
+    --font-body:'Nunito',sans-serif;
+    --font-head:'Nunito',cursive;
+
+    
+    --green:#28a745;
+    --yellow:#ffc107;
+    --red:#dc3545;
+    --paper:#fffaff;
+    --paper-2:#fbeefe;
+    --cloud:#ffffff;
+    --shadow:0 18px 40px rgba(151,49,167,.18);
+    --radius:12px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#f7ecfb}
+  body{
+    font-family:var(--font-body);
+    color:var(--body-color);
+    line-height:1.5;
+    min-height:100vh;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, #f3d9ff 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 0%, #ffe0f3 0%, transparent 55%),
+      linear-gradient(160deg,#f7ecfb 0%, #fdeafb 55%, #f3e6ff 100%);
+  }
+  h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading-color);font-weight:bold;line-height:1.2}
+
+  /* ===================== NAVBAR DEL SITIO ===================== */
+  .site-navbar-wrap{position:relative;z-index:20}
+  .site-navbar-wrap .navbar-brand{display:flex;align-items:center;gap:10px}
+  .site-navbar-wrap .navbar-brand span{
+    font-family:var(--font-head);font-size:1.9rem;color:var(--secondary);line-height:1
+  }
+  .site-navbar-wrap .navbar-nav .nav-link{
+    font-family:var(--font-body);font-weight:700;color:var(--secondary)!important;
+    padding:.5rem 1rem;transition:color .2s
+  }
+  .site-navbar-wrap .navbar-nav .nav-link:hover,
+  .site-navbar-wrap .navbar-nav .nav-link.active{color:var(--primary)!important}
+  .site-navbar-wrap .dropdown-item{font-family:var(--font-body);font-weight:600;color:var(--secondary)}
+  .site-navbar-wrap .dropdown-item:hover{background:var(--paper-2);color:var(--primary)}
+  .site-navbar-wrap .btn-suggest{
+    border:none;color:#fff;font-family:var(--font-body);font-weight:700;
+    padding:.6rem 1.4rem;border-radius:30px;
+    background:linear-gradient(120deg,var(--secondary),var(--primary));
+    transition:transform .15s
+  }
+  .site-navbar-wrap .btn-suggest:hover{transform:translateY(-2px) scale(1.03);color:#fff}
+
+  .book-page-wrap{padding:22px 14px 0}
+
+  /* floating decorations */
+  .sky-deco{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+  .sky-deco span{position:absolute;font-size:34px;opacity:.45;animation:float 9s ease-in-out infinite}
+  .sky-deco span:nth-child(1){top:8%;left:6%}
+  .sky-deco span:nth-child(2){top:18%;right:8%;animation-delay:1.2s}
+  .sky-deco span:nth-child(3){top:60%;left:4%;animation-delay:2s}
+  .sky-deco span:nth-child(4){top:72%;right:6%;animation-delay:.6s}
+  .sky-deco span:nth-child(5){top:40%;right:14%;animation-delay:3s}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-16px) rotate(6deg)}}
+
+  /* ===================== HEADER ===================== */
+  .book-shell{position:relative;z-index:1;max-width:960px;margin:0 auto}
+  .masthead{
+    text-align:center;color:#fff;padding:26px 20px;border-radius:var(--radius);
+    background:linear-gradient(120deg,var(--secondary),var(--primary));
+    box-shadow:var(--shadow);position:relative;overflow:hidden
+  }
+  .masthead h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:1px;color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.12)}
+  .masthead p{font-size:1.05rem;opacity:.97;margin-top:6px}
+  .rainbow-bar{height:8px;border-radius:20px;margin-top:14px;
+    background:linear-gradient(90deg,#fff,rgba(255,255,255,.4),#fff)}
+  .grade-badge{display:inline-block;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.6);
+    padding:5px 18px;border-radius:30px;margin-top:14px;font-weight:700;font-size:.9rem;font-family:var(--font-body)}
+
+  /* ===================== PROGRESS + NAV ===================== */
+  .toolbar{
+    position:sticky;top:8px;z-index:5;margin:16px auto;display:flex;align-items:center;gap:12px;
+    background:var(--cloud);padding:12px 16px;border-radius:40px;box-shadow:var(--shadow);flex-wrap:wrap;justify-content:center
+  }
+  .nav-btn{
+    border:none;cursor:pointer;font-weight:700;font-family:var(--font-body);color:#fff;
+    padding:12px 24px;border-radius:30px;font-size:1rem;transition:transform .15s, filter .15s;
+    background:linear-gradient(120deg,var(--secondary),var(--primary))
+  }
+  .nav-btn:hover{transform:translateY(-2px) scale(1.03)}
+  .nav-btn:active{transform:scale(.96)}
+  .nav-btn:disabled{filter:grayscale(.7);opacity:.45;cursor:not-allowed}
+  .page-count{font-weight:700;color:var(--secondary);min-width:96px;text-align:center}
+  .progress-track{flex:1 1 180px;height:14px;background:#efd9f5;border-radius:20px;overflow:hidden}
+  .progress-fill{height:100%;width:0;border-radius:20px;transition:width .4s ease;
+    background:linear-gradient(90deg,var(--secondary),var(--primary))}
+
+  /* ===================== PAGES ===================== */
+  .pages{position:relative;margin-top:18px}
+  .page{
+    display:none;background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:32px 28px;border:6px solid #fff;animation:pop .5s ease
+  }
+  .page.active{display:block}
+  @keyframes pop{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+
+  .page h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:6px;text-align:center;text-wrap:balance}
+  .page h3{color:var(--primary);margin:18px 0 6px;font-size:1.5rem}
+  .page h4{color:var(--secondary);margin:8px 0 4px;font-size:1.2rem}
+  .page p{margin:10px 0;font-size:1.06rem}
+  .page ul{margin:10px 0 10px 6px;list-style:none}
+  .page li{position:relative;padding:6px 0 6px 34px;font-size:1.04rem}
+  .page li::before{content:"\2b50";position:absolute;left:0;top:6px}
+  .chapter-tag{display:inline-block;background:var(--primary);color:#fff;font-weight:700;font-family:var(--font-body);
+    padding:5px 16px;border-radius:30px;font-size:.85rem;margin-bottom:10px}
+
+  .hero-char{font-size:80px;text-align:center;line-height:1;margin:6px 0}
+  .callout{background:var(--paper-2);border-left:8px solid var(--primary);border-radius:8px;padding:14px 18px;margin:16px 0}
+  .callout.alt{border-left-color:var(--secondary)}
+  .callout.green{border-left-color:var(--green)}
+  .moraleja{background:linear-gradient(120deg,#fbeefe,#ffe6f6);border:3px dashed var(--primary);
+    border-radius:12px;padding:16px 18px;margin-top:16px;font-weight:700;text-align:center}
+  .moraleja b{color:var(--secondary)}
+
+  .story-panel{background:#fff;border-radius:12px;padding:18px 20px;margin:12px 0;box-shadow:0 8px 18px rgba(151,49,167,.10)}
+  .dialogue{font-style:italic;color:var(--secondary);font-weight:700}
+
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:14px}
+  .mini-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 8px 18px rgba(198,108,234,.14);text-align:center}
+  .mini-card .ico{font-size:40px}
+  .mini-card h4{color:var(--primary);margin:8px 0 4px}
+
+  /* ===================== ACTIVITIES ===================== */
+  .activity-intro{text-align:center;background:linear-gradient(120deg,var(--primary),var(--secondary));
+    color:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  .activity-intro h2{color:#fff}
+
+  .feedback{margin-top:12px;font-weight:700;text-align:center;min-height:24px;font-size:1.05rem}
+  .feedback.good{color:var(--green)}
+  .feedback.bad{color:var(--red)}
+
+  /* semaforo activity */
+  .sem-item{display:flex;align-items:center;gap:14px;background:var(--paper-2);border-radius:10px;padding:12px;margin:10px 0;flex-wrap:wrap}
+  .sem-item .txt{flex:1 1 200px;font-size:1.02rem}
+  .light-group{display:flex;gap:8px}
+  .light{width:42px;height:42px;border-radius:50%;border:3px solid #e0c8ea;cursor:pointer;transition:transform .1s;background:#eee}
+  .light:hover{transform:scale(1.12)}
+  .light.green{background:var(--green)}
+  .light.yellow{background:var(--yellow)}
+  .light.red{background:var(--red)}
+  .light.sel{box-shadow:0 0 0 4px rgba(151,49,167,.4);border-color:var(--secondary)}
+
+  /* secrets sorting */
+  .bins{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .bin{min-height:120px;border-radius:12px;padding:12px;border:3px dashed}
+  .bin.good{border-color:var(--green);background:#eafaf0}
+  .bin.bad{border-color:var(--red);background:#fdeaed}
+  .bin h4{text-align:center;margin-bottom:8px}
+  .token{background:#fff;border-radius:10px;padding:10px 12px;margin:8px 0;box-shadow:0 4px 10px rgba(0,0,0,.08);cursor:grab;font-size:.98rem}
+  .token.dragging{opacity:.4}
+  .token-pool{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+
+  /* caritas quiz */
+  .quiz-q{background:var(--paper-2);border-radius:10px;padding:14px;margin:10px 0}
+  .faces{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+  .face{font-size:40px;background:#fff;border:3px solid #e6d3f0;border-radius:50%;width:64px;height:64px;
+    cursor:pointer;transition:transform .12s;line-height:1}
+  .face:hover{transform:scale(1.12)}
+  .face.sel{box-shadow:0 0 0 4px rgba(151,49,167,.45);border-color:var(--primary)}
+
+  .check-btn{display:block;margin:16px auto 0;border:none;cursor:pointer;color:#fff;font-family:var(--font-body);font-weight:700;
+    padding:12px 28px;border-radius:30px;font-size:1rem;background:linear-gradient(120deg,var(--secondary),var(--primary));transition:transform .15s}
+  .check-btn:hover{transform:translateY(-2px) scale(1.03)}
+
+  .finale{text-align:center;background:linear-gradient(120deg,var(--primary),var(--secondary));color:#fff;
+    border-radius:var(--radius);padding:36px;box-shadow:var(--shadow)}
+  .finale h2{color:#fff}
+  .stars-earned{font-size:44px;margin-top:10px;min-height:50px}
+
+  .book-note{text-align:center;margin-top:26px;color:#8a5a9a;font-size:.85rem}
+  .book-note a{color:var(--secondary)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+  /* ===================== SITE FOOTER  ===================== */
+.site-footer {
+  background: linear-gradient(135deg, #5b176d, #9731a7, #c66cea);
+  color: #fff;
+  margin-top: 45px;
+  padding: 42px 20px 18px;
+  width: 100%;
+  box-shadow: 0 -8px 25px rgba(91, 23, 109, .18);
+}
+
+.footer-grid {
+  width: min(1140px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer-col h3,
+.site-footer h4 {
+  color: #c66cea !important;
+}
+.footer-col h5 {
+  color: #fff;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.footer-col p,
+.footer-col a {
+  color: #f9eaff;
+  font-size: .94rem;
+  line-height: 1.6;
+}
+
+.footer-col a {
+  text-decoration: none;
+  transition: color .2s, padding-left .2s;
+}
+
+.footer-col a:hover {
+  color: #fff;
+  padding-left: 5px;
+}
+
+.footer-brand {
+  color: #e463f5;
+  font-family: 'Nunito', cursive;
+  font-size: .85rem;
+  text-decoration: none;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.socials a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  color: #fff;
+}
+
+.socials a:hover {
+  background: #fff;
+  color: #9731a7;
+}
+
+.footer-bottom {
+  max-width: 1140px;
+  margin: 30px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.3);
+  text-align: center;
+  color: #f9eaff;
+  font-size: .85rem;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 32px 18px 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR DEL SITIO (inicio) ===================== -->
+<div class="site-navbar-wrap container-fluid bg-light shadow">
+  <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+    <a href="index.html" class="navbar-brand font-weight-bold">
+    <img src="imglg/logo aurora.png " style="height:70px;">
+      <span>Aurora Segura</span>
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="navbar-nav font-weight-bold mx-auto py-0">
+        <a href="index.html" class="nav-item nav-link">Inicio</a>
+        <a href="about.html" class="nav-item nav-link">Cartillas</a>
+        <a href="class.html" class="nav-item nav-link">Socializacion</a>
+        <a href="team.html" class="nav-item nav-link">Integrantes</a>
+        <a href="gallery.html" class="nav-item nav-link">Galeria</a>
+        <a href="libro.html" class="nav-item nav-link active">Libro</a>
+     
+        <div class="nav-item dropdown">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Navbar End -->
+
+<div class="sky-deco" aria-hidden="true">
+  <span>&#127752;</span><span>&#9728;&#65039;</span><span>&#11088;</span><span>&#128156;</span><span>&#129419;</span>
+</div>
+
+<div class="book-page-wrap">
+<div class="book-shell">
+  <header class="masthead">
+    <h1>AURORA SEGURA</h1>
+    <p>Un libro m&aacute;gico con Luzia y Rayito</p>
+    <div class="rainbow-bar"></div>
+    <span class="grade-badge">Para ni&ntilde;as y ni&ntilde;os de 1&deg; a 5&deg; de primaria</span>
+  </header>
+
+  <nav class="toolbar" aria-label="Navegacion del libro">
+    <button class="nav-btn" id="prevBtn">&#9664; Anterior</button>
+    <span class="page-count" id="pageCount">P&aacute;gina 1</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <button class="nav-btn" id="nextBtn">Siguiente &#9654;</button>
+  </nav>
+
+  <main class="pages" id="pages">
+
+    <!-- 1. Portada / Rayito -->
+    <section class="page active">
+      <span class="chapter-tag">Bienvenida</span>
+      <div class="hero-char">&#127774;</div>
+      <h2>&iexcl;Hola! Yo soy Rayito</h2>
+      <p style="text-align:center">Soy un peque&ntilde;o sol sonriente y voy a acompa&ntilde;arte en este viaje m&aacute;gico junto a mi amiga Luzia.</p>
+      <div class="callout alt">
+        <p><b>&iquest;Qui&eacute;n es Luzia?</b> Es una ni&ntilde;a m&aacute;gica que naci&oacute; de la primera luz de la aurora. Tiene el cabello brillante como los rayos del amanecer y lleva una capa con los colores del arcoiris.</p>
+      </div>
+      <div class="card-grid">
+        <div class="mini-card"><div class="ico">&#11088;</div><h4>Su estrellita</h4><p>Brilla en su pecho cuando ense&ntilde;a algo importante.</p></div>
+        <div class="mini-card"><div class="ico">&#127752;</div><h4>Su capa</h4><p>Simboliza la esperanza y la protecci&oacute;n.</p></div>
+        <div class="mini-card"><div class="ico">&#9728;&#65039;</div><h4>Rayito</h4><p>&iexcl;Ese soy yo, siempre a su lado!</p></div>
+      </div>
+      <p style="text-align:center;margin-top:16px"><b>Pulsa "Siguiente" para comenzar la aventura.</b></p>
+    </section>
+
+    <!-- 2. Cuento: El poder magico del NO -->
+    <section class="page">
+      <span class="chapter-tag">Cuento 1 &middot; Mi cuerpo es m&iacute;o</span>
+      <div class="hero-char">&#128581;&#8205;&#9792;&#65039;</div>
+      <h2>El poder m&aacute;gico del NO</h2>
+      <div class="story-panel">
+        <p>Un d&iacute;a, Luzia jugaba en el parque con Rayito. De repente, vieron a un ni&ntilde;o triste sentado en un columpio.</p>
+        <p class="dialogue">&mdash;&iquest;Qu&eacute; te pasa? &mdash;pregunt&oacute; Luzia con dulzura.</p>
+        <p class="dialogue">&mdash;Es que alguien me quiso tocar y no supe qu&eacute; hacer... &mdash;dijo el ni&ntilde;o en voz bajita.</p>
+        <p>Rayito brill&oacute; fuerte y le respondi&oacute;:</p>
+        <p class="dialogue">&mdash;&iexcl;Tu cuerpo es tuyo! Nadie puede hacerte sentir inc&oacute;modo.</p>
+        <p>Luzia levant&oacute; su capa de arcoiris y ense&ntilde;&oacute; el poder m&aacute;gico del NO:</p>
+        <p class="dialogue">&mdash;Cuando algo no te gusta, dilo fuerte: "&iexcl;NO!" y corre a cont&aacute;rselo a un adulto de confianza.</p>
+        <p>El ni&ntilde;o practic&oacute;: <b>&mdash;&iexcl;NO!</b> &mdash;dijo con voz valiente. Todos aplaudieron. Desde ese d&iacute;a, supo que no estaba solo y que siempre deb&iacute;a contar lo que le pasaba.</p>
+      </div>
+      <div class="moraleja"><b>Moraleja:</b> Tu cuerpo es tuyo, respetalo, dilo sin miedo y siempre cu&eacute;ntalo a alguien de confianza.</div>
+    </section>
+
+    <!-- 3. Cuidar mi cuerpo -->
+    <section class="page">
+      <span class="chapter-tag">Aprendo a cuidarme</span>
+      <h2>Reglas para cuidar mi cuerpo</h2>
+      <p>Hay cosas que <b>nadie</b> puede hacer con tu cuerpo. Recuerda estas reglas m&aacute;gicas:</p>
+      <ul>
+        <li>Nadie puede obligarte a hacer cosas con tu cuerpo si t&uacute; no quieres.</li>
+        <li>No deben tomarte fotos sin ropa o de tus partes privadas.</li>
+        <li>No est&aacute; bien que te manden mensajes o fotos inadecuadas por celular, internet o redes sociales.</li>
+        <li>Nadie debe decirte cosas feas sobre tu cuerpo ni hablarte de cosas privadas de adultos.</li>
+        <li>Nadie debe hacerte tocar a otras personas de manera que no te gusta.</li>
+      </ul>
+      <div class="callout green">
+        <p><b>El respeto</b> hace que todos nos sintamos <b>seguros y felices</b>. Si algo te hace sentir inc&oacute;modo, &iexcl;dilo y cu&eacute;ntalo!</p>
+      </div>
+    </section>
+
+    <!-- 4. Pedir ayuda -->
+    <section class="page">
+      <span class="chapter-tag">Pido ayuda</span>
+      <div class="hero-char">&#129309;</div>
+      <h2>Aprender a pedir ayuda</h2>
+      <p>Si algo te hace sentir mal, o ves que maltratan a alguien, <b>cu&eacute;ntaselo a un adulto de confianza</b>: tu maestra, mam&aacute;, pap&aacute; u otra persona que te cuide.</p>
+      <div class="callout">
+        <p><b>No guardes silencio.</b> Siempre hay alguien que puede ayudarte.</p>
+      </div>
+      <h3>Secretos buenos y secretos malos</h3>
+      <div class="card-grid">
+        <div class="mini-card"><div class="ico">&#128516;</div><h4>Secretos buenos</h4><p>Te hacen sentir feliz, como una sorpresa de cumplea&ntilde;os. &iexcl;Puedes guardarlos!</p></div>
+        <div class="mini-card"><div class="ico">&#128543;</div><h4>Secretos malos</h4><p>Te ponen triste, con miedo o inc&oacute;modo. &iexcl;Debes contarlos a un adulto de confianza!</p></div>
+      </div>
+    </section>
+
+    <!-- 5. Respeto e igualdad -->
+    <section class="page">
+      <span class="chapter-tag">Cartilla 2 &middot; Todos merecemos respeto</span>
+      <h2>&iquest;Qu&eacute; es el respeto?</h2>
+      <div class="card-grid">
+        <div class="mini-card"><div class="ico">&#128157;</div><h4>Tratar bien</h4><p>A todos, sin importar si son ni&ntilde;os o ni&ntilde;as.</p></div>
+        <div class="mini-card"><div class="ico">&#128066;</div><h4>Escuchar</h4><p>Compartir y ayudar a los dem&aacute;s.</p></div>
+        <div class="mini-card"><div class="ico">&#128683;</div><h4>No burlarse</h4><p>Ni excluir a nadie de los juegos.</p></div>
+      </div>
+      <h3>Los ni&ntilde;os y las ni&ntilde;as somos iguales en derechos</h3>
+      <p>Todos podemos jugar, estudiar y expresar emociones. Podemos hacer lo que nos gusta sin importar si somos ni&ntilde;os o ni&ntilde;as.</p>
+      <div class="callout alt">
+        <p>Evita frases como <i>"las ni&ntilde;as no hacen eso"</i> o <i>"eso es solo para ni&ntilde;os"</i>. La violencia de g&eacute;nero ocurre cuando alguien maltrata, excluye o se burla solo porque la otra persona es ni&ntilde;o o ni&ntilde;a. <b>&iexcl;La violencia nunca est&aacute; bien!</b></p>
+      </div>
+    </section>
+
+    <!-- 6. Cuento: Rosa Caramelo -->
+    <section class="page">
+      <span class="chapter-tag">Cuento 2 &middot; Ser t&uacute; misma</span>
+      <div class="hero-char">&#128024;</div>
+      <h2>Rosa Caramelo</h2>
+      <div class="story-panel">
+        <p>En un pa&iacute;s de elefantes, las elefantas ten&iacute;an la piel rosa caramelo porque solo com&iacute;an flores amargas y llevaban lazos, collares y zapatitos rosados. Mientras tanto, los elefantes jugaban libres en la sabana, corr&iacute;an y se ba&ntilde;aban en el r&iacute;o.</p>
+        <p>Pero hab&iacute;a una elefantita diferente: <b>Margarita</b>. Aunque com&iacute;a flores, nunca se puso rosada. Sus pap&aacute;s se enojaban, pero ella segu&iacute;a siendo gris.</p>
+        <p>Un d&iacute;a, Margarita se cans&oacute;. Se quit&oacute; todo lo rosa y fue a jugar al campo, a comer frutas y a revolcarse en el barro. &iexcl;Estaba feliz y libre! Las otras elefantitas la miraron y, una a una, decidieron seguirla. Desde entonces, elefantes y elefantas jugaron juntos, iguales y felices.</p>
+      </div>
+      <div class="moraleja"><b>Moraleja:</b> No debemos cambiar para agradar a los dem&aacute;s. Cada uno es especial tal como es, y todos merecemos ser libres e iguales.</div>
+    </section>
+
+    <!-- 7. Cuento: Arturo y Clementina -->
+    <section class="page">
+      <span class="chapter-tag">Cuento 3 &middot; Mis sue&ntilde;os importan</span>
+      <div class="hero-char">&#128034;</div>
+      <h2>Arturo y Clementina</h2>
+      <div class="story-panel">
+        <p>Dos tortugas j&oacute;venes, Arturo y Clementina, se conocieron y comenzaron a vivir juntos. Clementina era alegre y so&ntilde;adora: quer&iacute;a viajar, tocar la flauta y pintar flores. Pero Arturo le dec&iacute;a que sus ideas eran tontas.</p>
+        <p>En vez de ayudarla, Arturo le pon&iacute;a cosas pesadas sobre el caparaz&oacute;n: un tocadiscos, cuadros, floreros, libros... Poco a poco, la casa de Clementina se volvi&oacute; tan pesada que apenas pod&iacute;a moverse. Ella se sent&iacute;a triste y atrapada.</p>
+        <p>Un d&iacute;a de primavera, Clementina dio un paseo sola y sinti&oacute; tanta alegr&iacute;a al moverse libre que decidi&oacute; marcharse. Al fin libre, pudo viajar, tocar m&uacute;sica y pintar hermosos paisajes, viviendo feliz a su manera.</p>
+      </div>
+      <div class="moraleja"><b>Moraleja:</b> No permitas que alguien corte tus alas ni apague tus sue&ntilde;os. Todos merecemos ser libres y encontrar nuestra propia felicidad.</div>
+    </section>
+
+    <!-- 8. Cuento: Luzia y la magia del respeto -->
+    <section class="page">
+      <span class="chapter-tag">Cuento 4 &middot; Igualdad al jugar</span>
+      <div class="hero-char">&#9917;</div>
+      <h2>Luzia y la magia del respeto</h2>
+      <div class="story-panel">
+        <p>Luzia y Rayito jugaban en el colegio cuando vieron a una ni&ntilde;a triste sentada sola en el patio.</p>
+        <p class="dialogue">&mdash;No me dejaron jugar f&uacute;tbol porque dijeron que "es solo para ni&ntilde;os" &mdash;respondi&oacute; la ni&ntilde;a.</p>
+        <p>Rayito brill&oacute; fuerte y dijo:</p>
+        <p class="dialogue">&mdash;Eso es violencia de g&eacute;nero. Todos tenemos derecho a jugar lo que nos gusta.</p>
+        <p>Luzia levant&oacute; su capa de arcoiris y mostr&oacute; el poder de la igualdad:</p>
+        <p class="dialogue">&mdash;Nadie puede limitarte por ser ni&ntilde;a o ni&ntilde;o. El respeto significa que todos valemos lo mismo.</p>
+        <p>La ni&ntilde;a sonri&oacute;: <b>&mdash;&iexcl;Yo tambi&eacute;n puedo jugar f&uacute;tbol!</b> Los dem&aacute;s ni&ntilde;os se unieron a ella. Desde ese d&iacute;a aprendieron que el respeto y la igualdad hacen los juegos m&aacute;s divertidos.</p>
+      </div>
+      <div class="moraleja"><b>Moraleja:</b> Todos merecemos respeto e igualdad, sin importar si somos ni&ntilde;os o ni&ntilde;as.</div>
+    </section>
+
+    <!-- 9. Quien me protege -->
+    <section class="page">
+      <span class="chapter-tag">Mi red de protecci&oacute;n</span>
+      <div class="hero-char">&#128737;&#65039;</div>
+      <h2>&iquest;Qui&eacute;n me protege?</h2>
+      <p style="text-align:center">Siempre hay personas y lugares seguros a los que puedes acudir si algo te hace sentir mal.</p>
+      <div class="card-grid">
+        <div class="mini-card"><div class="ico">&#128105;&#8205;&#128103;</div><h4>Mam&aacute; o pap&aacute;</h4></div>
+        <div class="mini-card"><div class="ico">&#128105;&#8205;&#127979;</div><h4>Mi maestra</h4></div>
+        <div class="mini-card"><div class="ico">&#127973;</div><h4>El centro de salud</h4></div>
+        <div class="mini-card"><div class="ico">&#128110;</div><h4>La polic&iacute;a</h4></div>
+      </div>
+      <div class="callout green" style="margin-top:16px">
+        <p style="text-align:center;font-size:1.15rem"><b>"Si algo me hace sentir mal, yo puedo pedir ayuda. Siempre hay alguien que me protege."</b></p>
+      </div>
+      <p style="text-align:center;margin-top:16px"><b>&iexcl;Ahora vienen las actividades interactivas! Pulsa "Siguiente".</b></p>
+    </section>
+
+    <!-- 10. Actividad Intro -->
+    <section class="page">
+      <div class="activity-intro">
+        <div class="hero-char">&#127918;</div>
+        <h2>&iexcl;Hora de jugar y aprender!</h2>
+        <p>Luzia y Rayito prepararon <b>3 actividades m&aacute;gicas</b> para ti. Compl&eacute;talas y gana estrellas.</p>
+      </div>
+    </section>
+
+    <!-- 11. Actividad 1: Semaforo del cuerpo -->
+    <section class="page">
+      <span class="chapter-tag">Actividad 1</span>
+      <h2>El sem&aacute;foro del cuerpo</h2>
+      <p>Elige el color correcto para cada situaci&oacute;n:</p>
+      <p style="font-size:.95rem">Verde: seguro y con respeto &middot; Amarillo: solo si yo quiero y digo que s&iacute; &middot; Rojo: nadie puede, mis partes privadas</p>
+      <div id="semList"></div>
+      <button class="check-btn" id="semCheck">Comprobar respuestas</button>
+      <div class="feedback" id="semFeedback" role="status"></div>
+    </section>
+
+    <!-- 12. Actividad 2: Secretos -->
+    <section class="page">
+      <span class="chapter-tag">Actividad 2</span>
+      <h2>El juego de los secretos</h2>
+      <p>Arrastra cada tarjeta a la caja correcta: <b>secretos buenos</b> (los puedo guardar) o <b>secretos malos</b> (los debo contar).</p>
+      <div class="token-pool" id="secretPool"></div>
+      <div class="bins">
+        <div class="bin good" data-bin="good"><h4>Secretos buenos</h4></div>
+        <div class="bin bad" data-bin="bad"><h4>Secretos malos</h4></div>
+      </div>
+      <button class="check-btn" id="secretCheck">Comprobar respuestas</button>
+      <div class="feedback" id="secretFeedback" role="status"></div>
+    </section>
+
+    <!-- 13. Actividad 3: Caritas -->
+    <section class="page">
+      <span class="chapter-tag">Actividad 3</span>
+      <h2>Se&ntilde;ales de alerta</h2>
+      <p>Elige la carita que muestra c&oacute;mo te har&iacute;a sentir cada situaci&oacute;n:</p>
+      <p style="font-size:.95rem">Feliz: seguro y contento &middot; Seria: me confunde o dudo &middot; Triste: miedo, incomodidad o dolor</p>
+      <div id="quizList"></div>
+      <button class="check-btn" id="quizCheck">Comprobar respuestas</button>
+      <div class="feedback" id="quizFeedback" role="status"></div>
+    </section>
+
+    <!-- 14. Finale -->
+    <section class="page">
+      <div class="finale">
+        <div class="hero-char">&#127752;</div>
+        <h2>&iexcl;Lo lograste!</h2>
+        <p>Ahora conoces el poder m&aacute;gico del <b>NO</b>, el valor del <b>respeto</b> y sabes que siempre puedes <b>pedir ayuda</b>.</p>
+        <div class="stars-earned" id="starsEarned">&#11088;</div>
+        <p style="margin-top:12px"><b>Recuerda:</b> tu cuerpo es tuyo, todos somos iguales y siempre hay alguien que te protege.</p>
+      </div>
+      <p class="book-note">
+        Proyecto <b>Aurora Segura</b> &middot; Prevenci&oacute;n de la violencia de g&eacute;nero y sexual en la infancia.<br/>
+        Basado en las cartillas Aurora Segura (referencias: ICBF y adaptaciones de "Rosa Caramelo" y "Arturo y Clementina" de Adela Turin).
+      </p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<!-- ===================== FOOTER DEL SITIO ===================== -->
+<!-- Footer Start -->
+<footer class="site-footer container-fluid text-white mt-4 py-3 px-sm-3 px-md-5">
+      <div class="row pt-2">
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <a href="#" class="navbar-brand font-weight-bold text-primary m-0 mb-3 p-0" style="font-size: 28px; line-height: 28px;">
+                <i class="flaticon-043-teddy-bear"></i>
+                <span class="text-white">Aurora Segura</span>
+            </a>
+            <p class="mb-3" style="font-size: 13px; line-height: 1.4;">
+                Iniciativa pedag&oacute;gica dedicada al fortalecimiento del autocuidado y la prevenci&oacute;n del riesgo en la infancia. Un compromiso con la seguridad de nuestros ni&ntilde;os y ni&ntilde;as de 1&deg; a 5&deg; grado.
+            </p>
+            <div class="d-flex justify-content-start mt-3">
+                <a class="btn rounded-circle text-center text-white mr-2 px-0 d-inline-flex align-items-center justify-content-center"
+                   style="width: 35px; height: 35px; background-color: #d23edc; font-size: 14px;"
+                   href="https://www.instagram.com/aurora_seguraa/"
+                   target="_blank" rel="noopener"
+                   aria-label="Instagram de Aurora Segura">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <h4 class="text-primary mb-3" style="font-size: 18px;">Ponte en contacto</h4>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#128205;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">Direcci&oacute;n</strong>
+                    <p class="m-0" style="font-size: 13px;">Cl. 6 #8-10, Villa Del Rosario, Norte de Santander</p>
+                </div>
+            </div>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#9993;&#65039;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">Gmail</strong>
+                    <p class="m-0" style="font-size: 13px;">somosaurorasegura@gmail.com</p>
+                </div>
+            </div>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#128222;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">N&uacute;mero de contacto</strong>
+                    <p class="m-0" style="font-size: 13px;">324 7331192</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <h4 class="text-primary mb-3" style="font-size: 18px;">Enlaces r&aacute;pidos</h4>
+            <div class="d-flex flex-column justify-content-start" style="font-size: 13px;">
+                <a class="text-white mb-2" href="http://www.sednortedesantander.gov.co/"><i class="fa fa-angle-right mr-2"></i>Secretar&iacute;a de educaci&oacute;n</a>
+                <a class="text-white mb-2" href="https://www.policia.gov.co/"><i class="fa fa-angle-right mr-2"></i>Polic&iacute;a nacional</a>
+                <a class="text-white mb-2" href="https://www.icbf.gov.co/"><i class="fa fa-angle-right mr-2"></i>Portal ICBF</a>
+                <a class="text-white mb-2" href="https://caivirtual.policia.gov.co/"><i class="fa fa-angle-right mr-2"></i>CAI virtual</a>
+                <a class="text-white mb-2" href="https://www.icbf.gov.co/noticias/linea-141"><i class="fa fa-angle-right mr-2"></i>L&iacute;nea 141</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="w-100 pt-2 mt-2" style="border-top: 1px solid rgba(236, 101, 162, 0.3);">
+        <p class="m-0 text-center text-white" style="font-size: 12px;">
+            &copy; <a class="footer-brand font-weight-bold" href="index.html">Aurora Segura</a>. Todos los derechos son reservados. Proyecto de formaci&oacute;n y prevenci&oacute;n infantil.
+        </p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  /* ============ NAVEGACION ============ */
+  const pages=[...document.querySelectorAll('.page')];
+  const prevBtn=document.getElementById('prevBtn');
+  const nextBtn=document.getElementById('nextBtn');
+  const pageCount=document.getElementById('pageCount');
+  const progressFill=document.getElementById('progressFill');
+  let idx=0;
+
+  function render(){
+    pages.forEach((p,i)=>p.classList.toggle('active',i===idx));
+    pageCount.textContent='Pagina '+(idx+1)+' de '+pages.length;
+    progressFill.style.width=((idx+1)/pages.length*100)+'%';
+    prevBtn.disabled=idx===0;
+    nextBtn.disabled=idx===pages.length-1;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  prevBtn.onclick=()=>{if(idx>0){idx--;render();}};
+  nextBtn.onclick=()=>{if(idx<pages.length-1){idx++;render();}};
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight')nextBtn.click();
+    if(e.key==='ArrowLeft')prevBtn.click();
+  });
+  render();
+
+  /* ============ ACTIVIDAD 1: SEMAFORO ============ */
+  const semData=[
+    {t:'Un abrazo carinoso de mi familia',a:'green'},
+    {t:'Un amigo quiere darme la mano para saludar',a:'yellow'},
+    {t:'Alguien quiere tocar mis partes privadas',a:'red'},
+    {t:'Jugar y reir con mis companeros',a:'green'},
+    {t:'Alguien quiere tomarme una foto sin ropa',a:'red'},
+  ];
+  const semList=document.getElementById('semList');
+  semData.forEach((it,i)=>{
+    const row=document.createElement('div');row.className='sem-item';
+    row.innerHTML='<span class="txt">'+it.t+'</span>'+
+      '<div class="light-group" data-i="'+i+'">'+
+        '<button class="light green" data-c="green" aria-label="Verde"></button>'+
+        '<button class="light yellow" data-c="yellow" aria-label="Amarillo"></button>'+
+        '<button class="light red" data-c="red" aria-label="Rojo"></button>'+
+      '</div>';
+    semList.appendChild(row);
+  });
+  semList.querySelectorAll('.light-group').forEach(g=>{
+    g.querySelectorAll('.light').forEach(b=>{
+      b.onclick=()=>{g.querySelectorAll('.light').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');g.dataset.pick=b.dataset.c;};
+    });
+  });
+  document.getElementById('semCheck').onclick=()=>{
+    let ok=0,ans=0;
+    semList.querySelectorAll('.light-group').forEach((g,i)=>{
+      if(g.dataset.pick){ans++;if(g.dataset.pick===semData[i].a)ok++;}
+    });
+    const f=document.getElementById('semFeedback');
+    if(ans<semData.length){f.className='feedback bad';f.textContent='Responde todas las situaciones.';return;}
+    if(ok===semData.length){f.className='feedback good';f.textContent='Perfecto! Conoces muy bien el semaforo del cuerpo.';markStar('a1');}
+    else{f.className='feedback bad';f.textContent='Acertaste '+ok+' de '+semData.length+'. Intentalo de nuevo!';}
+  };
+
+  /* ============ ACTIVIDAD 2: SECRETOS ============ */
+  const secretData=[
+    {t:'Preparar una sorpresa de cumpleanos',a:'good'},
+    {t:'Hacer una tarjeta para mama',a:'good'},
+    {t:'Un regalo para un amigo',a:'good'},
+    {t:'Un companero me obliga a algo que no quiero',a:'bad'},
+    {t:'Alguien me pide guardar toques o juegos incomodos',a:'bad'},
+    {t:'Un adulto me amenaza si hablo',a:'bad'},
+  ];
+  const pool=document.getElementById('secretPool');
+  const shuffled=[...secretData].sort(()=>Math.random()-0.5);
+  shuffled.forEach((it,i)=>{
+    const t=document.createElement('div');t.className='token';t.draggable=true;t.textContent=it.t;
+    t.dataset.answer=it.a;t.id='tok'+i;
+    pool.appendChild(t);
+  });
+  let dragged=null;
+  document.querySelectorAll('.token').forEach(t=>{
+    t.addEventListener('dragstart',()=>{dragged=t;t.classList.add('dragging');});
+    t.addEventListener('dragend',()=>{t.classList.remove('dragging');});
+  });
+  [pool,...document.querySelectorAll('.bin')].forEach(zone=>{
+    zone.addEventListener('dragover',e=>e.preventDefault());
+    zone.addEventListener('drop',e=>{e.preventDefault();if(dragged)zone.appendChild(dragged);});
+  });
+  document.getElementById('secretCheck').onclick=()=>{
+    const f=document.getElementById('secretFeedback');
+    if(pool.querySelector('.token')){f.className='feedback bad';f.textContent='Arrastra todas las tarjetas a una caja.';return;}
+    let ok=0;
+    document.querySelectorAll('.bin').forEach(bin=>{
+      bin.querySelectorAll('.token').forEach(tok=>{if(tok.dataset.answer===bin.dataset.bin)ok++;});
+    });
+    if(ok===secretData.length){f.className='feedback good';f.textContent='Excelente! Ya sabes que secretos contar.';markStar('a2');}
+    else{f.className='feedback bad';f.textContent='Acertaste '+ok+' de '+secretData.length+'. Sigue intentando!';}
+  };
+
+  /* ============ ACTIVIDAD 3: CARITAS ============ */
+  const quizData=[
+    {t:'Mi familia me abraza y me cuida',a:'happy'},
+    {t:'Alguien me dice cosas feas sobre mi cuerpo',a:'sad'},
+    {t:'No se si un juego esta bien o no',a:'serious'},
+    {t:'Juego libre y contento en el parque',a:'happy'},
+    {t:'Alguien me pide guardar un secreto que me da miedo',a:'sad'},
+  ];
+  const faces=[{k:'happy',e:'\uD83D\uDE0A'},{k:'serious',e:'\uD83D\uDE10'},{k:'sad',e:'\uD83D\uDE22'}];
+  const quizList=document.getElementById('quizList');
+  quizData.forEach((q,i)=>{
+    const box=document.createElement('div');box.className='quiz-q';
+    let faceHtml='';
+    faces.forEach(f=>{faceHtml+='<button class="face" data-k="'+f.k+'" aria-label="'+f.k+'">'+f.e+'</button>';});
+    box.innerHTML='<b>'+(i+1)+'. '+q.t+'</b><div class="faces" data-i="'+i+'">'+faceHtml+'</div>';
+    quizList.appendChild(box);
+  });
+  quizList.querySelectorAll('.faces').forEach(g=>{
+    g.querySelectorAll('.face').forEach(b=>{
+      b.onclick=()=>{g.querySelectorAll('.face').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');g.dataset.pick=b.dataset.k;};
+    });
+  });
+  document.getElementById('quizCheck').onclick=()=>{
+    let ok=0,ans=0;
+    quizList.querySelectorAll('.faces').forEach((g,i)=>{
+      if(g.dataset.pick){ans++;if(g.dataset.pick===quizData[i].a)ok++;}
+    });
+    const f=document.getElementById('quizFeedback');
+    if(ans<quizData.length){f.className='feedback bad';f.textContent='Elige una carita para cada situacion.';return;}
+    if(ok===quizData.length){f.className='feedback good';f.textContent='Increible! Sabes reconocer tus emociones.';markStar('a3');}
+    else{f.className='feedback bad';f.textContent='Acertaste '+ok+' de '+quizData.length+'. Piensalo otra vez!';}
+  };
+
+  /* ============ ESTRELLAS ============ */
+  const stars={a1:false,a2:false,a3:false};
+  function markStar(k){stars[k]=true;const n=Object.values(stars).filter(Boolean).length;
+    document.getElementById('starsEarned').textContent='\u2b50'.repeat(n)||'\u2b50';}
+</script>
+</body>
+</html>

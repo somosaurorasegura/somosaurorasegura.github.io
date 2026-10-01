@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Aurora Segura • Galeria </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+<link href="imglg/logo aurora.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Handlee&display=swap" rel="stylesheet">
+<style>
+/* ---------- TOKENS (mismos valores que libro.html) ---------- */
+:root{
+  --as-primary:#c66cea;
+  --as-secondary:#9731a7;
+  --as-body:#691010;
+  --as-paper:#fffaff;
+  --as-shadow:0 18px 40px rgba(151,49,167,.18);
+  --as-grad:linear-gradient(120deg,#9731a7,#c66cea);
+}
+
+/* ---------- BASE ---------- */
+html{background:#f7ecfb}
+body{
+  font-family:'Nunito',sans-serif;color:var(--as-body);line-height:1.5;
+  background:
+    radial-gradient(1200px 500px at 15% -10%,#f3d9ff 0,transparent 60%),
+    radial-gradient(1000px 500px at 90% 0,#ffe0f3 0,transparent 55%),
+    linear-gradient(160deg,#f7ecfb 0%,#fdeafb 55%,#f3e6ff 100%);
+  background-attachment:fixed;
+}
+h1,h2,h3,h4,h5,h6{font-family:'Nunito',cursive;color:var(--as-secondary);font-weight:700;line-height:1.2}
+p,li,i,span{font-family:'Nunito',sans-serif}
+
+/* ---------- UTILIDADES BOOTSTRAP RECOLOREADAS ---------- */
+.bg-primary{background:var(--as-grad)!important}
+.bg-secondary{background:var(--as-secondary)!important}
+.bg-light{background:#fdf6ff!important}
+.text-secondary{color:var(--as-secondary)!important}
+.bg-primary h1,.bg-primary h2,.bg-primary h3,.bg-primary h4,.bg-primary p,
+.bg-secondary h5,.bg-secondary p,.text-white{color:#fff!important}
+.text-primary{color:var(--as-primary)!important}
+a.text-primary:hover{color:var(--as-secondary)!important}
+.border-top{border-top:5px solid var(--as-primary)!important}
+.shadow,.shadow-sm{box-shadow:var(--as-shadow)!important}
+
+/* ---------- BOTONES ---------- */
+.btn-primary{background:var(--as-grad);border:none;color:#fff;border-radius:30px;font-weight:700;transition:transform .15s}
+.btn-primary:hover,.btn-primary:focus{background:var(--as-grad);color:#fff;transform:translateY(-2px) scale(1.02);box-shadow:none}
+.btn-outline-light:hover{background:#fff;color:var(--as-secondary)}
+.back-to-top{background:var(--as-grad)!important;border:none;border-radius:50%}
+
+/* ---------- NAVBAR ---------- */
+.navbar-light .navbar-nav .nav-link{font-family:'Nunito',sans-serif;font-weight:700;color:var(--as-secondary)!important;transition:color .2s}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active{color:var(--as-primary)!important}
+.navbar-brand span{font-family:'Nunito',cursive;color:var(--as-primary)!important}
+.navbar-brand img{border-radius:12px}
+
+/* ---------- TITULOS DE SECCION ---------- */
+.section-title{color:var(--as-secondary)}
+.section-title span{color:var(--as-secondary);font-family:'Nunito',cursive;font-size:1.35rem}
+.section-title::before,.section-title::after{background:var(--as-primary)!important;border-color:var(--as-primary)!important}
+.bg-primary h3.display-3{text-shadow:0 3px 0 rgba(0,0,0,.12)}
+
+/* ---------- FILTROS DE LA GALERIA ---------- */
+#portfolio-flters li{
+  cursor:pointer;color:var(--as-secondary);border:2px solid var(--as-primary);
+  border-radius:30px;font-weight:700;padding:8px 22px;transition:all .2s;
+}
+#portfolio-flters li:hover,
+#portfolio-flters li.active{
+  background:var(--as-grad);border-color:transparent;color:#fff;transform:translateY(-2px);
+}
+
+/* ---------- TARJETAS DE FOTOS ---------- */
+.portfolio-item .position-relative{
+  border-radius:14px;border:6px solid #fff;box-shadow:0 10px 24px rgba(198,108,234,.18);
+  transition:transform .25s,box-shadow .25s;
+}
+.portfolio-item:hover .position-relative{
+  transform:translateY(-6px);box-shadow:0 20px 40px rgba(151,49,167,.26);
+}
+.portfolio-item img{aspect-ratio:4/3;object-fit:cover}
+.portfolio-btn{
+  background:rgba(151,49,167,.72)!important;
+  top:0;left:0;opacity:0;transition:opacity .3s;
+}
+.portfolio-item:hover .portfolio-btn{opacity:1}
+.portfolio-btn i{font-size:52px!important;color:#fff!important}
+
+/* ---------- FOOTER ---------- */
+.bg-secondary .form-control{border-radius:8px;font-family:'Nunito',sans-serif}
+.bg-secondary .btn-primary{background:#fff;color:var(--as-secondary)}
+.bg-secondary .btn-primary:hover{background:#fff;color:var(--as-secondary);filter:brightness(.95)}
+.bg-secondary a.text-white:hover{color:#f0c4f7!important}
+.bg-secondary .btn-outline-primary{color:#fff;border-color:#fff}
+.bg-secondary .btn-outline-primary:hover{background:#fff;color:var(--as-secondary)}
+</style>
+
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-light position-relative shadow">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+            <a href="#" class="navbar-brand font-weight-bold text-secondary">
+    <img src="imglg/logo aurora.png" alt="Logo" style="height:70px;">
+                <span class="text-primary">Aurora Segura</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav font-weight-bold mx-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Inicio</a>
+                    <a href="about.html" class="nav-item nav-link">Cartillas</a>
+                    <a href="class.html" class="nav-item nav-link">Socializacion</a>
+                    <a href="team.html" class="nav-item nav-link">Integrantes</a>
+                    <a href="gallery.html" class="nav-item nav-link active">Galeria</a>
+                    <a href="libro.html" class="nav-item nav-link">Libro</a>
+                    <div class="nav-item dropdown">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Gallery Start -->
+<div class="container-fluid pt-5 pb-3">
+    <div class="container">
+        <div class="text-center pb-2">
+            <p class="section-title px-5">
+                <span class="px-2">Nuestra Galeria</span>
+            </p>
+            <h1 class="mb-4">Evidencias de la socialización del proyecto Aurora Segura en las aulas</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center mb-2">
+                <ul class="list-inline mb-4" id="portfolio-flters">
+                    <li class="btn btn-outline-primary m-1 active" data-filter="*">Todos</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".first">1ero</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".second">2do</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".third">3ero</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".fourth">4to</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".fifth">5to</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+            <!-- Elemento 1 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-01/1.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-01/1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 1">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Nueva imagen -->
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-01/1.2.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-01/1.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 1">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-01/1.3.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-01/1.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 1">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-01/1.1.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-01/1.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 1">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elemento 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="2-01/3.1.jpeg" alt="Actividad del segundo grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="2-01/3.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 2">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+             <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="2-01/3.2.jpeg" alt="Actividad del segundo grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="2-01/3.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 2">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="2-01/3.jpeg" alt="Actividad del segundo grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="2-01/3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 2">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Elemento 3 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-01/5.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-01/5.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 3">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-01/5.1.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-01/5.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 3">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-01/5.2.jpeg"Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-01/5.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 3">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-01/5.3.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-01/5.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 3">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elemento 4 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-01/7.1.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-01/7.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                      <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-01/7.2.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-01/7.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                      <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-01/7.3.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-01/7.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                      <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-01/7.4.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-01/7.4.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            <!-- Elemento 5 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-01/10.1.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-01/10.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-01/10.3.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-01/10.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-01/10.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-01/10.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elemento 6 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-02/2.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-02/2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 6">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-02/2.1.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-02/2.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 6">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-02/2.2.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-02/2.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 6">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="1-02/2.3.jpeg" alt="Actividad del primer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="1-02/2.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 6">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+ 
+
+            <!-- Elemento 7 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="2-02/4.jpeg" alt="Actividad del segundo grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="2-02/4.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 7">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="2-02/4.1.jpeg" alt="Actividad del segundo grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="2-02/4.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 7">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="2-02/4.2.jpeg" alt="Actividad del segundo grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="2-02/4.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 7">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elemento 8 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-02/6.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-02/6.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 8">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-02/6.1.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-02/6.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 8">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-02/6.2.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-02/6.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 8">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="3-02/6.3.jpeg" alt="Actividad del tercer grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="3-02/6.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 8">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Elemento 9 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-02/8.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-02/8.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 9">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-02/8.1.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-02/8.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                      <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-02/8.2.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-02/8.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                      <div class="col-lg-4 col-md-6 mb-4 portfolio-item fourth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="4-02/8.3.jpeg" alt="Actividad del cuarto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="4-02/8.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 4">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Elemento 10 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-02/9.1.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-02/9.1.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-02/9.2.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-02/9.2.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-02/9.3.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-02/9.3.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                <div class="position-relative overflow-hidden mb-2">
+                    <img class="img-fluid w-100" src="5-02/9.jpeg" alt="Actividad de quinto grado">
+                    <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <a href="5-02/9.jpeg" data-lightbox="portfolio" aria-label="Ver imagen 5">
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-secondary text-white mt-4 py-3 px-sm-3 px-md-5" style="font-size: 14px;">
+    <div class="row pt-2">
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-3 p-0" style="font-size: 28px; line-height: 28px;">
+                <i class="flaticon-043-teddy-bear"></i>
+                <span class="text-white">Aurora Segura</span>
+            </a>
+            <p class="mb-3" style="font-size: 13px; line-height: 1.4;">Iniciativa pedag&oacute;gica dedicada al fortalecimiento del autocuidado y la prevenci&oacute;n del riesgo en la infancia. Un compromiso con la seguridad de nuestros ni&ntilde;os y ni&ntilde;as de 1&ordm; a 3&ordm; grado.</p>
+            <div class="d-flex justify-content-start mt-3">
+                <a class="btn rounded-circle text-center text-white mr-2 px-0 d-inline-flex align-items-center justify-content-center"
+                   style="width: 35px; height: 35px; background-color: #d23edc; font-size: 14px;"
+                   href="https://www.instagram.com/aurora_seguraa/"
+                   target="_blank" rel="noopener"
+                   aria-label="Instagram de Aurora Segura">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <h4 class="text-primary mb-3" style="font-size: 18px;">Ponte en contacto</h4>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#128205;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">Direcci&oacute;n</strong>
+                    <p class="m-0" style="font-size: 13px;">Cl. 6 #8-10, Villa Del Rosario, Norte de Santander</p>
+                </div>
+            </div>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#9993;&#65039;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">Gmail</strong>
+                    <p class="m-0" style="font-size: 13px;">somosaurorasegura@gmail.com</p>
+                </div>
+            </div>
+            <div class="d-flex mb-2">
+                <span class="ico" style="font-size: 14px;">&#128222;</span>
+                <div class="pl-2">
+                    <strong class="text-white d-block" style="font-size: 13px;">N&uacute;mero de contacto</strong>
+                    <p class="m-0" style="font-size: 13px;">324 7331192</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-3">
+            <h4 class="text-primary mb-3" style="font-size: 18px;">Enlaces r&aacute;pidos</h4>
+            <div class="d-flex flex-column justify-content-start" style="font-size: 13px;">
+                <a class="text-white mb-2" href="http://www.sednortedesantander.gov.co/"><i class="fa fa-angle-right mr-2"></i>Secretar&iacute;a de educaci&oacute;n</a>
+                <a class="text-white mb-2" href="https://www.policia.gov.co/"><i class="fa fa-angle-right mr-2"></i>Polic&iacute;a nacional</a>
+                <a class="text-white mb-2" href="https://www.icbf.gov.co/"><i class="fa fa-angle-right mr-2"></i>Portal ICBF</a>
+                <a class="text-white mb-2" href="https://caivirtual.policia.gov.co/"><i class="fa fa-angle-right mr-2"></i>CAI virtual</a>
+                <a class="text-white mb-2" href="https://www.icbf.gov.co/noticias/linea-141"><i class="fa fa-angle-right mr-2"></i>L&iacute;nea 141</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="w-100 pt-2 mt-2" style="border-top: 1px solid rgba(236, 101, 162, 0.3);">
+        <p class="m-0 text-center text-white" style="font-size: 12px;">
+            &copy; <a class="text-primary font-weight-bold" href="index.html">Aurora Segura</a>. Todos los derechos son reservados. Proyecto de formaci&oacute;n y prevenci&oacute;n infantil.
+        </p>
+    </div>
+
+</div>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
