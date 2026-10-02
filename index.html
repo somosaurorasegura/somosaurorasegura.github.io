@@ -204,12 +204,106 @@ a.text-primary:hover{color:var(--as-secondary)!important}
 
 
 /* ---------- FOOTER ---------- */
-.bg-secondary .form-control{border-radius:8px;font-family:'Nunito',sans-serif}
-.bg-secondary .btn-primary{background:#fff;color:var(--as-secondary)}
-.bg-secondary .btn-primary:hover{background:#fff;color:var(--as-secondary);filter:brightness(.95)}
-.bg-secondary a.text-white:hover{color:#f0c4f7!important}
+.site-footer {
+  background: linear-gradient(135deg, #5b176d, #9731a7, #c66cea);
+  color: #fff;
+  margin-top: 45px;
+  padding: 42px 20px 18px;
+  width: 100%;
+  box-shadow: 0 -8px 25px rgba(91, 23, 109, .18);
 }
 
+.footer-grid {
+  width: min(1140px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer-col h3,
+.site-footer h4 {
+  color: #c66cea !important;
+}
+.footer-col h5 {
+  color: #fff;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.footer-col p,
+.footer-col a {
+  color: #f9eaff;
+  font-size: .94rem;
+  line-height: 1.6;
+}
+
+.footer-col a {
+  text-decoration: none;
+  transition: color .2s, padding-left .2s;
+}
+
+.footer-col a:hover {
+  color: #fff;
+  padding-left: 5px;
+}
+
+.footer-brand {
+  color: #e463f5;
+  font-family: 'Nunito', cursive;
+  font-size: .85rem;
+  text-decoration: none;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.socials a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  color: #fff;
+}
+
+.socials a:hover {
+  background: #fff;
+  color: #9731a7;
+}
+
+.footer-bottom {
+  max-width: 1140px;
+  margin: 30px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.3);
+  text-align: center;
+  color: #f9eaff;
+  font-size: .85rem;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 32px 18px 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+}
    
   
 </style>
