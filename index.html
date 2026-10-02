@@ -184,6 +184,47 @@ a.text-primary:hover{color:var(--as-secondary)!important}
 .bg-secondary .btn-primary:hover{background:#fff;color:var(--as-secondary);filter:brightness(.95)}
 .bg-secondary a.text-white:hover{color:#f0c4f7!important}
 }
+.as-video-blog {
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #fff5fb, #f8eaff);
+}
+
+.as-video-blog__content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 45px 30px;
+  text-align: center;
+  background: #fffaff;
+  border-top: 5px solid var(--as-primary);
+  border-radius: 18px;
+  box-shadow: var(--as-shadow);
+}
+
+.as-video-blog__content h2 {
+  margin-bottom: 25px;
+  color: var(--as-secondary);
+}
+
+.as-video-blog__player {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  margin: 0 auto;
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 12px 30px rgba(151, 49, 167, 0.2);
+}
+
+@media (max-width: 576px) {
+  .as-video-blog {
+    padding: 45px 15px;
+  }
+
+  .as-video-blog__content {
+    padding: 30px 15px;
+  }
+}
 </style>
 
 </head>
@@ -314,21 +355,15 @@ a.text-primary:hover{color:var(--as-secondary)!important}
     
 
 <!-- Blog Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="text-center pb-2">
-                <p class="section-title px-5"><span class="px-2">Entrevista al Director del Proyecto</span></p>
-                <h1 class="mb-4">Conoce la Visión de Aurora Segura</h1>
-                  <section class="hero">
-    <p>Realizamos una platica con el director del proyecto, el Magister Giovanni Castrillon, quien nos explica detalladamente el impacto, el propósito y las metas alcanzadas hasta el momento</p>
-  </section>
-<section class="video-seccion">
-  <div class="video-contenedor">
-    <iframe
-      src="https://www.youtube.com/embed/XtJqtpY8JXQ"
-      title="Video de YouTube"
-      allowfullscreen>
-    </iframe>
+<section class="as-video-blog" aria-labelledby="as-video-title">
+  <div class="as-video-blog__content">
+    <p class="section-title px-5"><span class="px-2">Conoce la Visión de Aurora Segura</span></p>
+    <h2 id="as-video-title">Realizamos una platica con el director del proyecto, el Magister Giovanni Castrillon, quien nos explica detalladamente el impacto, el propósito y las metas alcanzadas hasta el momento</h2>
+
+    <video class="as-video-blog__player" controls preload="metadata">
+      <source src="entrevista.mp4" type="video/mp4">
+      Tu navegador no admite la reproducción de videos.
+    </video>
   </div>
 </section>
 
