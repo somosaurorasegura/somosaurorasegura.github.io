@@ -184,47 +184,30 @@ a.text-primary:hover{color:var(--as-secondary)!important}
 .bg-secondary .btn-primary:hover{background:#fff;color:var(--as-secondary);filter:brightness(.95)}
 .bg-secondary a.text-white:hover{color:#f0c4f7!important}
 }
-.as-video-blog {
-  padding: 70px 20px;
-  background: linear-gradient(135deg, #fff5fb, #f8eaff);
-}
 
-.as-video-blog__content {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 45px 30px;
-  text-align: center;
-  background: #fffaff;
-  border-top: 5px solid var(--as-primary);
-  border-radius: 18px;
-  box-shadow: var(--as-shadow);
-}
-
-.as-video-blog__content h2 {
-  margin-bottom: 25px;
-  color: var(--as-secondary);
-}
-
-.as-video-blog__player {
-  display: block;
-  width: 100%;
-  max-height: 560px;
-  margin: 0 auto;
-  border-radius: 14px;
-  background: #000;
-  box-shadow: 0 12px 30px rgba(151, 49, 167, 0.2);
-}
-
-@media (max-width: 576px) {
-  .as-video-blog {
-    padding: 45px 15px;
+   
+  .as-video-blog__wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto;   
+    padding-bottom: 56.25%;/
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
   }
 
-  .as-video-blog__content {
-    padding: 30px 15px;
+  /* Ajuste del iframe dentro del contenedor */
+  .as-video-blog__player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
-}
+
 </style>
 
 </head>
@@ -355,14 +338,16 @@ a.text-primary:hover{color:var(--as-secondary)!important}
     
 
 <!-- Blog Start -->
-<section class="as-video-blog" aria-labelledby="as-video-title">
-  <div class="as-video-blog__content">
-    <p class="section-title px-5"><span class="px-2">Conoce la Visión de Aurora Segura</span></p>
-    <h2 id="as-video-title">Realizamos una platica con el director del proyecto, el Magister Giovanni Castrillon, quien nos explica detalladamente el impacto, el propósito y las metas alcanzadas hasta el momento</h2>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XtJqtpY8JXQ?si=MFB27Ist_0Tjkj1-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-</section>
+<div class="as-video-blog__wrapper">
+  <iframe 
+    class="as-video-blog__player" 
+    src="https://www.youtube.com/embed/ID_DEL_VIDEO" 
+    title="Entrevista"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
 
     <!-- Blog End -->
 
