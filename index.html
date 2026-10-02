@@ -113,11 +113,7 @@ a.text-primary:hover{color:var(--as-secondary)!important}
 .bg-primary h1.display-3{text-shadow:0 3px 0 rgba(0,0,0,.12);text-wrap:balance}
 
 /* ---------- VIDEO DE LA ENTREVISTA ---------- */
-.video-section{margin:26px auto 0;max-width:820px}
-.video-section video{
-  width:100%;border-radius:14px;border:6px solid #fff;box-shadow:var(--as-shadow);background:#000;
-}
-.hero p{max-width:760px;margin:0 auto;font-size:1.05rem}
+s
 
 /* ---------- SECCIÓN SITIO TRANSVERSAL ---------- */
 .sitio-transversal {
@@ -178,134 +174,53 @@ a.text-primary:hover{color:var(--as-secondary)!important}
 }
 .d-flex.bg-light.border-top.rounded h4{color:var(--as-primary)}
 
-.as-video-blog__wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 800px; 
-    margin: 0 auto;   
-    padding-bottom: 56.25%;/
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
-  }
-
-  /* Ajuste del iframe dentro del contenedor */
-  .as-video-blog__player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  
-
-
 /* ---------- FOOTER ---------- */
-.site-footer {
-  background: linear-gradient(135deg, #5b176d, #9731a7, #c66cea);
-  color: #fff;
-  margin-top: 45px;
-  padding: 42px 20px 18px;
+.bg-secondary .form-control{border-radius:8px;font-family:'Nunito',sans-serif}
+.bg-secondary .btn-primary{background:#fff;color:var(--as-secondary)}
+.bg-secondary .btn-primary:hover{background:#fff;color:var(--as-secondary);filter:brightness(.95)}
+.bg-secondary a.text-white:hover{color:#f0c4f7!important}
+}
+.as-video-blog {
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #fff5fb, #f8eaff);
+}
+
+.as-video-blog__content {
   width: 100%;
-  box-shadow: 0 -8px 25px rgba(91, 23, 109, .18);
-}
-
-.footer-grid {
-  width: min(1140px, 100%);
+  max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-
-.footer-col h3,
-.site-footer h4 {
-  color: #c66cea !important;
-}
-.footer-col h5 {
-  color: #fff;
-  margin-bottom: 14px;
-  font-weight: 700;
-}
-
-.footer-col p,
-.footer-col a {
-  color: #f9eaff;
-  font-size: .94rem;
-  line-height: 1.6;
-}
-
-.footer-col a {
-  text-decoration: none;
-  transition: color .2s, padding-left .2s;
-}
-
-.footer-col a:hover {
-  color: #fff;
-  padding-left: 5px;
-}
-
-.footer-brand {
-  color: #e463f5;
-  font-family: 'Nunito', cursive;
-  font-size: .85rem;
-  text-decoration: none;
-}
-
-.socials {
-  display: flex;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.socials a {
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255,255,255,.7);
-  border-radius: 50%;
-  color: #fff;
-}
-
-.socials a:hover {
-  background: #fff;
-  color: #9731a7;
-}
-
-.footer-bottom {
-  max-width: 1140px;
-  margin: 30px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,.3);
+  padding: 45px 30px;
   text-align: center;
-  color: #f9eaff;
-  font-size: .85rem;
+  background: #fffaff;
+  border-top: 5px solid var(--as-primary);
+  border-radius: 18px;
+  box-shadow: var(--as-shadow);
 }
 
-@media (max-width: 768px) {
-  .site-footer {
-    padding: 32px 18px 16px;
+.as-video-blog__content h2 {
+  margin-bottom: 25px;
+  color: var(--as-secondary);
+}
+
+.as-video-blog__player {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  margin: 0 auto;
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 12px 30px rgba(151, 49, 167, 0.2);
+}
+
+@media (max-width: 576px) {
+  .as-video-blog {
+    padding: 45px 15px;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .footer-col {
-    text-align: center;
-  }
-
-  .socials {
-    justify-content: center;
+  .as-video-blog__content {
+    padding: 30px 15px;
   }
 }
-   
-  
 </style>
 
 </head>
@@ -436,9 +351,21 @@ a.text-primary:hover{color:var(--as-secondary)!important}
     
 
 <!-- Blog Start -->
+<section class="as-video-blog" aria-labelledby="as-video-title">
+  <div class="as-video-blog__content">
+    <p class="section-title px-5"><span class="px-2">Blog</span></p>
+    <h2 id="as-video-title">Conoce más sobre Aurora Segura</h2>
 
-    
-
+    <iframe
+      class="as-video-blog__player"
+      src="https://www.youtube.com/embed/XtJqtpY8JXQ?si=WcVys02_q-wWrmhi"
+      title="Entrevista de Aurora Segura"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
     <!-- Blog End -->
 
  
